@@ -11,33 +11,39 @@ import java.util.List;
 * cuentas en general.
 * */
 public class WalletDB {
-    private static List<Account> savedAccount;
+    private final List<Account> savedAccounts;
 
     /*
     * Al iniciar una instancia de la clase WalletDB,
     * se inicializa una lista nueva.
     * */
     public WalletDB() {
-        savedAccount = new ArrayList<>();
+        savedAccounts = new ArrayList<>();
     }
 
     public void save(Account account) {
         // todo: validar antes de guardar la cuenta
-        savedAccount.add(account);
+        savedAccounts.add(account);
     }
 
     public Account findByAccountNumber(int accountNumber) {
         // todo: validar antes de obtener la cuenta
-        return savedAccount.get(accountNumber);
+        Account account = null;
+        for (var savedAccount : this.savedAccounts) {
+            if (savedAccount.getAccountNumber() == accountNumber) {
+                account = savedAccount;
+            }
+        }
+        return account;
     }
 
     public void removeByAccountNumber(int accountNumber) {
-        Account accountToRemove = savedAccount.get(accountNumber);
+        Account accountToRemove = savedAccounts.get(accountNumber);
         accountToRemove.setEnabled(false); // borramos lógicamente y no físicamente
-        savedAccount.add(accountToRemove); // todo: verificar que el borrado funciona
+        savedAccounts.add(accountToRemove); // todo: verificar que el borrado funciona
     }
 
     public List<Account> findAll() {
-        return savedAccount;
+        return savedAccounts;
     }
 }

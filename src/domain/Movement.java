@@ -65,17 +65,17 @@ public class Movement {
      * */
     public String getDetail() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Detalles del comprobante: {número de transacción: ");
+        sb.append("DETALLES DEL COMPROBANTE\n");
+        sb.append("Número de transacción: ");
         sb.append(transactionId);
-        sb.append(", fecha y hora: ");
+        sb.append("\nFecha y hora: ");
         sb.append(date);
-        sb.append(", cuenta de origen: ");
+        sb.append("\nCuenta de origen: ");
         sb.append(originAccount);
-        sb.append(", cuenta de destino: ");
+        sb.append("\nCuenta de destino: ");
         sb.append(destinationAccount);
-        sb.append(", monto: ");
+        sb.append("\nMonto: ");
         sb.append(amount);
-        sb.append("}");
         return sb.toString();
     }
 }
